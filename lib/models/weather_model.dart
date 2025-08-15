@@ -8,4 +8,12 @@ class WeatherModel {
     required this.temperature,
     required this.mainCondition,
   });
+
+  factory WeatherModel.fromJson(Map<String, dynamic> json) {
+    return WeatherModel(
+      cityName: json['name'] ?? '',
+      temperature: (json['main']['temp'] as num).toDouble(),
+      mainCondition: json['weather'][0]['main'] ?? '',
+    );
+  }
 }
